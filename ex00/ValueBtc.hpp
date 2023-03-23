@@ -3,7 +3,8 @@
 
 #include <time.h>
 #include <iostream>
-#include <ofstream>
+#include <fstream>
+#include <map>
 
 class ValueBtc{
     private:
@@ -18,6 +19,8 @@ class ValueBtc{
         ValueBtc&   operator=(const ValueBtc& src);
         
         void    setDatabase(std::string csv);
+        void    readDatabase(void);
+        void    parseLine(std::string line);
 };
 
 #endif
