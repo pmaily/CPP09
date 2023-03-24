@@ -10,6 +10,7 @@ class ValueBtc{
     private:
         std::map<std::string,float> btc_value;
         std::ifstream               database;
+        static int                  nb_day[12];
     public:
         ValueBtc(void);
         ValueBtc(std::string csv);
