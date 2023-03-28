@@ -1,22 +1,15 @@
-#include <time.h>
-#include <iostream>
-#include <cstring>
-#include <cstdlib>
+#include "BitcoinExchange.hpp"
 
 int main(int ac, char **av)
 {
-    char * endPtr;
-    double value = strtod(av[1], &endPtr ); 
-    std::cout << value << std::endl;
-//     std::string test("2016-02-31,1fef,");
-//     struct tm tm;
-
-
-//     if (!strptime(test.c_str(), "%F", &tm))
-//         std::cerr << "invalide date" << std::endl;
-
-//     char buff[16];
-//     strftime(buff, 16, "%F", &tm);
-//     std::cout << buff << std::endl;
+    BitcoinExchange test;
     
+    if (ac != 2)
+    {
+        std::cerr << "Error: need one argument" << std::endl;
+        return 1; 
+    }
+    if (test.readDatabase() || test.readSearchFile(av[1]))
+        return 1;
+    return 0;
 }
