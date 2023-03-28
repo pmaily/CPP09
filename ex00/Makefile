@@ -3,7 +3,7 @@ SRCS =	main.cpp \
 
 NAME = btc
 OBJS = $(SRCS:.cpp=.o)
-CC = c++ -std=c++98 -Wall -Wextra -Werror
+CC = c++ -g -std=c++98 -Wall -Wextra -Werror
 
 all : $(NAME)
 

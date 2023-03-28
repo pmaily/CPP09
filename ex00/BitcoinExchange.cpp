@@ -100,6 +100,11 @@ void    BitcoinExchange::findBtcValue(std::string line)
     it = btc_value.upper_bound(key);
     if ((it->first > key || it == btc_value.end()) && it != btc_value.begin())
         it--;
+    if (it == btc_value.begin() && key < btc_value.begin()->first)
+    {
+        std::cerr << "Error: unkown value for this date" << std::endl;
+        return ;
+    }
     std::cout << date << " => " << value << " = " << value * it->second << '\n';
 }        
 
@@ -140,7 +145,6 @@ bool    BitcoinExchange::readDatabase(void)
         getline(database, line);
         parseLine(line);
     }
-    btc_value.insert(std::pair<int, float>(0, 0));
     return 0;
 }
 
